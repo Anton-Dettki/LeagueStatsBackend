@@ -2,8 +2,8 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 env:
   PORT: 3000
-  RIOT_KEY: ${{ secrets.RIOT_KEY }}
-  MONGO_URI: ${{ secrets.MONGO_URI }}
+  RIOT_KEY: RGAPI-7f883e73-c025-4902-8fdd-13f3babb07d3
+  MONGO_URI: mongodb+srv://admin:FWENO3Wa6et9Ui87@clusterdbleague.fjoio2u.mongodb.net/leagueStats?retryWrites=true&w=majority&appName=ClusterDBLeague
 
 name: Build and deploy Node.js app to Azure Web App - leagueBackend
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "dev": "node index.js",
     "build": "node index.js"
   },
   "keywords": [],

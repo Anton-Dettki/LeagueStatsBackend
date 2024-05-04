@@ -12,7 +12,9 @@ const AccountSchema = new Schema({
     profileIconId: Number,
     wins: Number,
     losses: Number,
-    lastUpdate: Date
+    lastUpdate: Date,
+    assistsTotal: Number,
+    assistsThisWeek: Number
 
 })
 

@@ -29,6 +29,7 @@ async function updateTotalKillsAndDeaths(puuid, queueId) {
 
         let cumKills = acc[0].killsTotal
         let cumDeaths = acc[0].deathsTotal
+        let cumAssists = acc[0].assistsTotal
 
         const allMatches = await axios.get(`https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?startTime=${lastUpdateTime}&start=0&count=100&api_key=${process.env.RIOT_KEY}`)
 
@@ -40,12 +41,14 @@ async function updateTotalKillsAndDeaths(puuid, queueId) {
                 for (let j = 0; j < accountMatchData.length; j++) {
                     cumKills += accountMatchData[j].kills
                     cumDeaths += accountMatchData[j].deaths
+                    cumAssists += accountMatchData[j].assists
                 }
             }
 
             await account.updateOne({puuid: puuid}, {
                 killsTotal: cumKills,
                 deathsTotal: cumDeaths,
+                assistsTotal: cumAssists,
                 lastUpdate: newUpdateTime * 1000
             })
         }

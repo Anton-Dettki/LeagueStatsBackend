@@ -25,7 +25,7 @@ async function updateTotalKillsAndDeaths(puuid, queueId) {
     const lastUpdateTime = Math.floor(acc[0].lastUpdate / 1000)
     const newUpdateTime = Math.floor(now.getTime() / 1000)
 
-    if (lastUpdateTime <= newUpdateTime){ //TODO
+    if (lastUpdateTime <= newUpdateTime) { //TODO
 
         let cumKills = acc[0].killsTotal
         let cumDeaths = acc[0].deathsTotal
@@ -33,7 +33,7 @@ async function updateTotalKillsAndDeaths(puuid, queueId) {
 
         const allMatches = await axios.get(`https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?startTime=${lastUpdateTime}&start=0&count=100&api_key=${process.env.RIOT_KEY}`)
 
-        if(allMatches.data) {
+        if (allMatches.data) {
             for (let i = 0; i < allMatches.data.length; i++) {
                 const match = await axios.get(`https://europe.api.riotgames.com/lol/match/v5/matches/${allMatches.data[i]}/?api_key=${process.env.RIOT_KEY}`)
                 const accountMatchData = match.data.info.participants.filter((participant) => participant.summonerId == acc[0].summonerId)
@@ -51,10 +51,9 @@ async function updateTotalKillsAndDeaths(puuid, queueId) {
                 assistsTotal: cumAssists,
                 lastUpdate: newUpdateTime * 1000
             })
+        } else {
+            console.log("Youre Updating too fast")
         }
-    }
-    else{
-        console.log("Youre Updating too fast")
     }
 }
 async function updateWeeklyStats(){

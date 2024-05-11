@@ -1,4 +1,6 @@
 const { Schema, model } = require('mongoose')
+require('dotenv').config();
+
 
 const AccountSchema = new Schema({
     gameName: String,
@@ -17,7 +19,7 @@ const AccountSchema = new Schema({
     assistsThisWeek: Number
 
 })
-
-const Account = model('Account', AccountSchema)
+const collection = process.env.COLLECTION
+const Account = model(collection, AccountSchema) //Account
 
 module.exports = Account

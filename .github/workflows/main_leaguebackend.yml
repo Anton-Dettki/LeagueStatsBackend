@@ -4,6 +4,7 @@ env:
   PORT: ${{ secrets.PORT }}
   RIOT_KEY: ${{ secrets.RIOT_KEY }}
   MONGODB_URI: ${{ secrets.MONGODB_URI }}
+  CONNECTION: ${{ secrets.CONNECTION }}
 
 
 name: Build and deploy Node.js app to Azure Web App - leagueBackend

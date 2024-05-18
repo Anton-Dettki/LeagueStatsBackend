@@ -51,8 +51,6 @@ async function updateTotalKillsAndDeaths(puuid, queueId) {
                 assistsTotal: cumAssists,
                 lastUpdate: newUpdateTime * 1000
             })
-        } else {
-            console.log("Youre Updating too fast")
         }
     }
 }
@@ -71,7 +69,7 @@ async function updateWinLoss(summonerId, queueType){
 
     for (let i = 0; i < data.length; i++){
         if(data[i].queueType == queueType){
-            await account.updateOne({ summonerId: summonerId}, { wins: data[i].wins, losses: data[i].losses})
+            await account.updateOne({ summonerId: summonerId}, {$inc: {wins: data[i].wins, losses: data[i].losses}})
         }
     }
 

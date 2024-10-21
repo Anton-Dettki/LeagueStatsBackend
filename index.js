@@ -25,7 +25,7 @@ mongoose
     .catch((err) => console.log(err))
 
 app.use('/api', AccountListRoutes)
-app.use('/update', riotApiRoutes)
+app.use('/update', riotApiRoutes)/
 
 app.listen(process.env.PORT, () => console.log(`App listening at http://localhost:${process.env.PORT}`))
 

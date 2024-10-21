@@ -16,7 +16,8 @@ const AccountSchema = new Schema({
     losses: Number,
     lastUpdate: Date,
     assistsTotal: Number,
-    assistsThisWeek: Number
+    assistsThisWeek: Number,
+    level: Number
 
 })
 const collection = process.env.COLLECTION
